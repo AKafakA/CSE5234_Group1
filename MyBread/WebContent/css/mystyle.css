@@ -1,0 +1,103 @@
+@CHARSET "ISO-8859-1";
+
+html {
+	color: #2E2E2E;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #eaeaea;
+	max-width: 980px;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	text-align: center;
+}
+
+h1 {
+	font-szie: 30px;
+	font-style: italic;
+	text-align: center;
+	background-color: #eaeaea;
+	color: #212121;
+	text-shadow: 1px 1px grey;
+}
+
+h2 {
+	font-szie: 20px;
+	font-style: italic;
+	text-align: center;
+	background-color: #eaeaea;
+	color: #424242;
+}
+
+h3 {
+	font-szie: 5px;
+	font-style: italic;
+	text-align: center;
+	background-color: #eaeaea;
+	color: #424242;
+}
+
+form {
+	width: 80%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto; 
+}
+
+.formInput {
+	width: 80%;
+	color: #000000;
+	background-color: #feffff;
+}
+
+table {
+	width: 80%;
+	margin-top: 20px;
+	margin-bottom: 50px;
+	border:1pt solid #808080;
+	margin-left: auto;
+	margin-right: auto; 
+}
+
+th {
+	color: #424242;
+	border:1pt solid #808080;
+	text-align: center;
+	background-color: #c0c0c0;
+}
+
+td {
+	height: 30px;
+	color: #424242;
+	border:1pt solid #808080;
+	text-align: center;
+	background-color: #e1e1e1;
+}
+
+.image {
+	width: 150px;
+	height: 150px; 
+}
+
+.stub {
+	padding: 15px;
+	width: 100%;
+	text-align: center;
+	background-color: #eaeaea;
+	color: #797979;
+}
+
+.footer {
+	clear: both;
+	position: inherit;
+	margin-top: 50px;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	width: 100%;
+	height: 20px;
+	background-color: #808080;
+	color:#fff;
+}
