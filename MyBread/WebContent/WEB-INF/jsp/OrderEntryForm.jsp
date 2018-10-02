@@ -6,14 +6,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mystyle.css" >
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" >
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Order Entry Form</title>
 </head>
 <body>
 <h1>Order Entry Form</h1>
 <form:form modelAttribute="order" method="post" action="purchase/submitItems">
-
-    <table width="350" border="solid 1px black">
+    <table>
     	<tr>
     		<th>Name</th>
     		<th>Price</th>
@@ -29,15 +31,11 @@
 				<c:out value="$${item.price}"></c:out>
 			    <form:input type="hidden" path="items[${loop.index}].price"/>
 			</td>
-			<td><form:input path="items[${loop.index}].quantity" /></td>
+			<td><form:input path="items[${loop.index}].quantity" class="form-control" /></td>
 		</tr>
 	</c:forEach>
-
-	  <tr>
-		<td colspan="2"><input type="submit" value="Purchase"></td>
-	  </tr>
     </table>
+   	<input type="submit" class="btn btn-outline-success" value="Purchase">
 </form:form>
-
 </body>
 </html>

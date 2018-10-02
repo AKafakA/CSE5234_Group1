@@ -4,11 +4,12 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mystyle.css" >
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" >
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>footer</title>
+<title>Purchase</title>
 </head>
 <body class="bodyCenterGrey">
-<p class="footer">All rights reserved 2018</p>
+	<jsp:include page="Header.jsp"/>
+	<jsp:include page="OrderEntryForm.jsp"/>
+	<jsp:include page="Footer.jsp"/>
 </body>
 </html>

@@ -55,7 +55,7 @@ public class Purchase {
 		
 		order.setItems(items);
 		request.setAttribute("order", order);
-		return "OrderEntryForm";
+		return "Purchase";
 	}
 
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)

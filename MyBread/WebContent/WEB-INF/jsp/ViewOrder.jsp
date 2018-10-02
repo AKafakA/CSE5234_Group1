@@ -5,10 +5,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mystyle.css" >
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" >
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>View Order</title>
 </head>
-<body>
+<body class="bodyCenterGrey">
 	<h1>View Order</h1>
 
 	<h2>Order</h2>
@@ -42,7 +44,7 @@
 		</tr>
 	</table>
 	<h2>Shipping Information</h2>
-	<table width="600" border="solid 1px black">
+	<table>
 		<tr>
 			<th>Name</th>
 			<th>Address Line 1</th>
@@ -79,7 +81,8 @@
 		<form:input type="hidden" path="payment.cvvCode" />
 		<form:input type="hidden" path="payment.cardHolderName" /> --%>
 		
-		<input type="submit" value="Confirm" />
+		<input type="submit" class="btn btn-outline-success" value="Confirm" />
 	</form:form>
+	<jsp:include page="Footer.jsp"/>
 </body>
 </html>

@@ -5,14 +5,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mystyle.css" >
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" >
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Confirmation</title>
 </head>
-<body>
+<body class="bodyCenterGrey">
 	<h1>Confirmation</h1>
-	<p>
+	<h3>
 		Your order has been submitted. Your confirmation number is ${confirmation}.
-	</p>
+	</h3>
 	<h2>Order</h2>
 	<table width="350" border="solid 1px black">
     	<tr>
@@ -44,7 +46,7 @@
 		</tr>
 	</table>
 	<h2>Shipping Information</h2>
-	<table width="600" border="solid 1px black">
+	<table>
 		<tr>
 			<th>Name</th>
 			<th>Address Line 1</th>
@@ -62,8 +64,9 @@
 			<td><c:out value="${shipping.zip}"></c:out></td>
 		</tr>
 	</table>
-	<form:form method="get" action="../purchase">
-		<input type="submit" value="Return Homepage" />
+	<form:form method="get" action="../">
+		<input type="submit"  class="btn btn-outline-success" value="Return Homepage" />
 	</form:form>
+	<jsp:include page="Footer.jsp"/>
 </body>
 </html>

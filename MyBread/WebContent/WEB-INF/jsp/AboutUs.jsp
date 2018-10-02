@@ -4,6 +4,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mystyle.css" >
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" >
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>About Us</title>
 </head>
@@ -18,23 +19,25 @@
 			<th>Education and Experience </th>
 		</tr>
 		<tr>
-			<td></td>
-			<td>@osu.edu</td>
+			<td ><img src="${pageContext.request.contextPath}/images/tyler.jpg" 
+				class="image"/><br /> Tyler Cai</td>
+			<td>cai.471@osu.edu</td>
 			<td>Cofounder, Software Developer</td>
-			<td width= 450px>A second year Computer Science master student from the Ohio State University</td>
+			<td width= 450px>A fourth-year undergraduate student at The Ohio State University majoring in Computer Science and Engineering.</td>
 		</tr>
 		<tr>
-			<td></td>
-			<td>@osu.edu</td>
+			<td ><img src="${pageContext.request.contextPath}/images/wei.jpg" 
+				class="image"/><br /> Wei Da</td>
+			<td>da.11@osu.edu</td>
 			<td>Cofounder, Software Developer</td>
-			<td width= 450px>A second year Computer Science master student from the Ohio State University</td>
+			<td width= 450px>A second-year master student at The Ohio State University majoring in Computer Science and Engineering</td>
 		</tr>
 		<tr>
 			<td><img src="${pageContext.request.contextPath}/images/zuanxu.jpg" 
 				class="image"/><br /> Zuanxu Gong</td>
 			<td>gong.366@osu.edu</td>
 			<td>Cofounder, Software Developer</td>
-			<td width= 450px>A second-year master student at The Ohio State University, majoring in Computer Science and Engineering</td>
+			<td width= 450px>A second-year master student at The Ohio State University majoring in Computer Science and Engineering</td>
 		</tr>
 		
 	</table>
