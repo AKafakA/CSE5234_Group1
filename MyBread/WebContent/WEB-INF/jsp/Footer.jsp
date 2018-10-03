@@ -9,6 +9,7 @@
 <title>footer</title>
 </head>
 <body class="bodyCenterGrey">
+<hr>
 <p class="footer">All rights reserved 2018</p>
 </body>
 </html>
