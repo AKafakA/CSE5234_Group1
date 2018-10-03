@@ -25,7 +25,16 @@
 		<tr>
 			<td><c:out value="${item.name}"></c:out></td>
 			<td><c:out value="$${item.price}"></c:out></td>
-			<td><c:out value="${item.quantity}" /></td>
+			<td><c:choose>
+			    <c:when test="${item.quantity != ''}">
+			        <c:out value= "${item.quantity}"/>
+			        <br />
+			    </c:when>    
+			    <c:otherwise>
+			        <c:out value = '0' />
+			        <br />
+			    </c:otherwise>
+			</c:choose></td>
 		</tr>
 	</c:forEach>
 	</table>
