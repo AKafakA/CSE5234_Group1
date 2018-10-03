@@ -13,7 +13,8 @@
 <title>Shipping Entry Form</title>
 </head>
 <body class="bodyCenterGrey">
-<h1>Shipping Entry Form</h1>
+<jsp:include page="Header.jsp"/>
+<h1>Shipping</h1>
 <form:form modelAttribute="shipping" method="post" action="submitShipping">
     <table>
 	   	<tr>

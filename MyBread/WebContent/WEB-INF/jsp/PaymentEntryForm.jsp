@@ -13,21 +13,26 @@
 <title>Payment Entry Form</title>
 </head>
 <body class="bodyCenterGrey">
-<h1>Payment Entry Form</h1>
+<jsp:include page="Header.jsp"/>
+<h1>Payment</h1>
 <form:form modelAttribute="payment" method="post" action="submitPayment">
     <table>
-	   	<tr>
+    	<tr>
 	   		<th>Credit Card Number</th>
-	   		<th>Expiration Date</th>
-	   		<th>CVV Code</th>
-	   		<th>Card Holder Name</th>
+	   		<td><form:input path="creditCardNumber" class="form-control" /></td>
 	   	</tr>
-		<tr>
-			<td><form:input path="creditCardNumber" class="form-control" /></td>
+	    <tr>
+	   		<th>Expiration Date</th>
 			<td><form:input path="expirationDate" class="form-control" /></td>
-			<td><form:input path="cvvCode" class="form-control" /></td>
-			<td><form:input path="cardHolderName" class="form-control" /></td>
+	   	</tr>
+	   	<tr>
+	   		<th>CVV Code</th>
+	   		<td><form:input path="cvvCode" class="form-control" /></td>
 		</tr>
+	   	<tr>
+	   		<th>Card Holder Name</th>
+	   		<td><form:input path="cardHolderName" class="form-control" /></td>
+	   	</tr>
     </table>
     <input type="submit" class="btn btn-outline-success"  value="Pay">
 </form:form>

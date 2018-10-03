@@ -11,6 +11,7 @@
 <title>Confirmation</title>
 </head>
 <body class="bodyCenterGrey">
+	<jsp:include page="Header.jsp"/>
 	<h1>Confirmation</h1>
 	<h3>
 		Your order has been submitted. Your confirmation number is ${confirmation}.

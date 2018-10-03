@@ -11,6 +11,7 @@
 <title>View Order</title>
 </head>
 <body class="bodyCenterGrey">
+	<jsp:include page="Header.jsp"/>
 	<h1>View Order</h1>
 
 	<h2>Order</h2>

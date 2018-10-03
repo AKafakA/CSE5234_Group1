@@ -41,11 +41,11 @@ public class Purchase {
 		oatBread.setPrice("3.75");
 		honeyWheatBread.setPrice("4.50");
 		
-		whiteBread.setQuantity("0");
-		wheatBread.setQuantity("0");
-		raisinBread.setQuantity("0");
-		oatBread.setQuantity("0");
-		honeyWheatBread.setQuantity("0");
+		whiteBread.setQuantity("");
+		wheatBread.setQuantity("");
+		raisinBread.setQuantity("");
+		oatBread.setQuantity("");
+		honeyWheatBread.setQuantity("");
 		
 		items.add(whiteBread);
 		items.add(wheatBread);

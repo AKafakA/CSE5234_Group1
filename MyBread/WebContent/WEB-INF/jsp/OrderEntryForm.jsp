@@ -13,7 +13,7 @@
 <title>Order Entry Form</title>
 </head>
 <body>
-<h1>Order Entry Form</h1>
+<h1>Order Here</h1>
 <form:form modelAttribute="order" method="post" action="purchase/submitItems">
     <table>
     	<tr>
@@ -31,7 +31,7 @@
 				<c:out value="$${item.price}"></c:out>
 			    <form:input type="hidden" path="items[${loop.index}].price"/>
 			</td>
-			<td><form:input path="items[${loop.index}].quantity" class="form-control" /></td>
+			<td><form:input type = "text" path="items[${loop.index}].quantity" class="form-control" /></td>
 		</tr>
 	</c:forEach>
     </table>

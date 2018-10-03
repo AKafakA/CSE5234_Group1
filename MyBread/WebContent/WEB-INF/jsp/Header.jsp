@@ -9,14 +9,22 @@
 <title>header</title>
 </head>
 <body class="bodyCenterGrey">
-	<h1>MyBread</h1>
-	<h3>One stop shop for all your bread needs...</h3>
-	<br/>
-	<a href="${pageContext.request.contextPath}/" class="stub">Home</a>
-	<a href="${pageContext.request.contextPath}/purchase" class="stub">Purchase</a>
-	<a href="${pageContext.request.contextPath}/AboutUs" class="stub">About Us</a>
-	<a href="${pageContext.request.contextPath}/ContactUs" class="stub">Contact Us</a>
-	<br/>
-	<br/>
+	<div class="row">
+		<div class="col-sm-1"> </div>
+		<div class="col-sm-2"> 
+			<img src="${pageContext.request.contextPath}/images/logo.png" class="image"/> 
+		</div>
+		<div class="col-sm-6"> 
+			<h1>MyBread</h1>
+			<h3>One stop shop for all your bread needs...</h3>
+				<br/>
+				<a href="${pageContext.request.contextPath}/" class="stub">Home</a>
+				<a href="${pageContext.request.contextPath}/purchase" class="stub">Purchase</a>
+				<a href="${pageContext.request.contextPath}/AboutUs" class="stub">About Us</a>
+				<a href="${pageContext.request.contextPath}/ContactUs" class="stub">Contact Us</a>
+				<br/>
+		</div>
+	</div>
+	<hr>
 </body>
 </html>
