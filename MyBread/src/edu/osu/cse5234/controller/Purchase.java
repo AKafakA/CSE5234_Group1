@@ -1,6 +1,5 @@
 package edu.osu.cse5234.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.osu.cse5234.business.OrderProcessingServiceBean;
+import edu.osu.cse5234.business.view.Inventory;
+import edu.osu.cse5234.business.view.InventoryService;
+import edu.osu.cse5234.business.view.Item;
+import edu.osu.cse5234.util.ServiceLocator;
+
 @Controller
 @RequestMapping("/purchase")
 public class Purchase {
@@ -19,40 +24,10 @@ public class Purchase {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// ... instantiate and set order object with items to display
 		Order order = new Order();
-		List<Item> items = new ArrayList<Item>();
-		
-		Item whiteBread = new Item();
-		Item wheatBread = new Item();
-		Item raisinBread = new Item();
-		Item oatBread = new Item();
-		Item honeyWheatBread = new Item();
-		
-		whiteBread.setName("White Bread");
-		wheatBread.setName("Wheat Bread");
-		raisinBread.setName("Raisin Bread");
-		oatBread.setName("Oat Bread");
-		honeyWheatBread.setName("Honey Wheat Bread");
-		
-		whiteBread.setPrice("3.00");
-		wheatBread.setPrice("4.00");
-		raisinBread.setPrice("3.50");
-		oatBread.setPrice("3.75");
-		honeyWheatBread.setPrice("4.50");
-		
-		whiteBread.setQuantity("");
-		wheatBread.setQuantity("");
-		raisinBread.setQuantity("");
-		oatBread.setQuantity("");
-		honeyWheatBread.setQuantity("");
-		
-		items.add(whiteBread);
-		items.add(wheatBread);
-		items.add(raisinBread);
-		items.add(oatBread);
-		items.add(honeyWheatBread);
-		
+		InventoryService inventoryService = ServiceLocator.getInventoryService();
+		Inventory inventory = inventoryService.getAvailableInventory();
+		List<Item> items = inventory.getItemList();
 		order.setItems(items);
 		request.setAttribute("order", order);
 		return "Purchase";
@@ -61,7 +36,14 @@ public class Purchase {
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) {
 		request.getSession().setAttribute("order", order);
-		return "redirect:/purchase/paymentEntry";
+		OrderProcessingServiceBean orderProcessingServiceBean = ServiceLocator.getOrderProcessingService();
+		if (orderProcessingServiceBean.validateItemAvailability(order)) {
+			request.getSession().setAttribute("valid", true);
+			return "redirect:/purchase/paymentEntry";
+		} else {
+			request.getSession().setAttribute("valid", false);
+			return "redirect:/Purchase";
+		}
 	}
 	
 	@RequestMapping(path = "/paymentEntry", method = RequestMethod.GET)
@@ -97,6 +79,10 @@ public class Purchase {
 	public String confirmOrder(HttpServletRequest request) {
 		count++;
 		request.getSession().setAttribute("confirmation", count);
+		/*Order order = (Order)request.getSession().getAttribute("order");
+		OrderProcessingServiceBean orderProcessingServiceBean = ServiceLocator.getOrderProcessingService();
+		String confirmationCode = orderProcessingServiceBean.processOrder(order);
+		request.getSession().setAttribute("confirmationCode", confirmationCode);*/
 		return "redirect:/purchase/viewConfirmation";
 	}
 	
