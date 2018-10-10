@@ -79,18 +79,6 @@ public class InventoryServiceBean implements InventoryService {
 	public boolean updateInventory(Collection<Item> items) {
 		// Update the inventory
 		// TODO: Also update the database to decrease quantities correspondingly
-		/*for (Item orderItem : items) {
-			int orderQuantity = orderItem.getQuantity().equals("") ? 0 : Integer.parseInt(orderItem.getQuantity());
-			if (orderQuantity > 0) {
-				for (Item inventoryItem : items) {
-					if (orderItem.getName().equals(inventoryItem.getName())) {
-						int inventoryQuantity =  inventoryItem.getQuantity().equals("") ? 0 : Integer.parseInt(inventoryItem.getQuantity());
-						inventoryItem.setQuantity(Integer.toString(inventoryQuantity - orderQuantity));
-						System.out.println(inventoryItem.getName() + ". New quantity: " +  inventoryItem.getQuantity());
-					}
-				}
-			}
-		}*/
 		return true;
 	}
 }

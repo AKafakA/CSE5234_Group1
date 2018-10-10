@@ -1,5 +1,7 @@
 package edu.osu.cse5234.business;
 
+import java.util.Random;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
@@ -23,32 +25,13 @@ public class OrderProcessingServiceBean {
     }
 
     public String processOrder(Order order) {
-/*    	PaymentInfo paymentInfo = order.getPaymentInfo();
-    	CreditCardPayment creditCardPayment = new CreditCardPayment();
-    	creditCardPayment.setCreditCardNumber(paymentInfo.getCreditCardNumber());
-    	creditCardPayment.setCvvCode(paymentInfo.getCvvCode());
-    	creditCardPayment.setExpirationDate(paymentInfo.getExpirationDate());
-    	creditCardPayment.setCardHolderName(paymentInfo.getCardHolderName());
-    	String confirmationNumber = service.getPaymentProcessorPort().processPayment(creditCardPayment); 
-    	if (Integer.parseInt(confirmationNumber) >= 0) {
-    		paymentInfo.setConfirmationNumber(confirmationNumber);
-    		//order.setPaymentInfo(paymentInfo);
-    		InventoryService inventoryService = ServiceLocator.getInventoryService();
-    		inventoryService.updateInventory(order.getLineItemList());
-    		entityManager.persist(order);
-    		entityManager.flush();
-    		// Generate a random number for the confirmation code
-    		int max = 9999999;
-    		int min = 1000000;
-    		Random rand = new Random();
-    		int randomNumber = rand.nextInt(max - min + 1) + min;
-    		System.out.println(randomNumber);
-    		notifyUser();
-    		return String.valueOf(randomNumber);
-    	} else {
-    		return "-1";
-    	}*/
-    	return "-1";
+    	int max = 9999999;
+    	int min = 1000000;
+    	Random rand = new Random();
+    	int randomNumber = rand.nextInt(max - min + 1) + min;
+    	System.out.println(randomNumber);
+    	return String.valueOf(randomNumber);
+
     }
     
     public boolean validateItemAvailability(Order order) {
