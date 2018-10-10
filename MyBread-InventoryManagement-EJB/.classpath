@@ -12,6 +12,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/gzx/Documents/semester3/Distribute/workspace/devtools/wlp-javaee7-18.0.0.2/wlp/dev/api/spec/com.ibm.websphere.javaee.ejb.3.2_1.0.21.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tyler/Documents/workspace/devtools/wlp/dev/api/spec/com.ibm.websphere.javaee.ejb.3.2_1.0.21.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

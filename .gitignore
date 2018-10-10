@@ -2,3 +2,6 @@
 /build/
 /.settings/
 /.metadata/
+/.recommenders/
+
+*.classpath
