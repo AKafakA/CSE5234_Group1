@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	<persistence-unit name="MyBread-InventoryManagement-EJB" transaction-type="JTA">
+		<jta-data-source>jdbc/h2</jta-data-source>
+		<class>edu.osu.cse5234.business.view.Item</class>
+		<properties>
+			<property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.H2Platform"/>
+			<property name="eclipselink.weaving" value="false"/>
+		</properties>
+	</persistence-unit>
+</persistence>

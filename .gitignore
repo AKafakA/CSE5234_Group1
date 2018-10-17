@@ -3,5 +3,6 @@
 /.settings/
 /.metadata/
 /.recommenders/
-
-*.classpath
+/.classpath/
+.classpath
+.DS_Store

@@ -28,6 +28,9 @@ public class Purchase {
 		InventoryService inventoryService = ServiceLocator.getInventoryService();
 		Inventory inventory = inventoryService.getAvailableInventory();
 		List<Item> items = inventory.getItemList();
+		for(Item item : items) {
+			item.setQuantity(0);
+		}
 		order.setItems(items);
 		request.setAttribute("order", order);
 		return "Purchase";
@@ -42,7 +45,7 @@ public class Purchase {
 			return "redirect:/purchase/paymentEntry";
 		} else {
 			request.getSession().setAttribute("valid", false);
-			return "redirect:/Purchase";
+			return "redirect:/";
 		}
 	}
 	

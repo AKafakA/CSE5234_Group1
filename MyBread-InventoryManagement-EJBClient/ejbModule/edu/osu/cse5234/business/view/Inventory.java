@@ -1,5 +1,6 @@
 package edu.osu.cse5234.business.view;
 
+import java.awt.event.ItemEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +30,12 @@ public class Inventory implements Serializable {
 		List<Item> result = new ArrayList<Item>();
 		for (Item item : itemList) {
 			Item newItem = new Item();
-			
+			newItem.setId(item.getId());
+			newItem.setItemNumber(item.getItemNumber());
 			newItem.setName(item.getName());
 			newItem.setPrice(item.getPrice());
-			newItem.setQuantity(item.getPrice());
-			
+			newItem.setDescription(item.getDescription());
+			newItem.setQuantity(item.getQuantity());			
 			result.add(newItem);
 		}
 		return result;

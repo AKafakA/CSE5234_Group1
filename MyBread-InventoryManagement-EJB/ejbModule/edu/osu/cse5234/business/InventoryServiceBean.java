@@ -10,6 +10,8 @@ import java.util.List;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * Session Bean implementation class InventoryServiceBean
@@ -18,60 +20,35 @@ import javax.ejb.Stateless;
 @Remote(InventoryService.class)
 public class InventoryServiceBean implements InventoryService {
 	
+	@PersistenceContext
+	private EntityManager entityManager;
 	private List<Item> items = new ArrayList<Item>();
+	private final String MY_QUERY = "Select i from Item i";
 	
     public InventoryServiceBean() {
     	items = null;
     }
 
 	@Override
-	public Inventory getAvailableInventory() {
-		items = new ArrayList<Item>();
-		
-		Item whiteBread = new Item();
-		Item wheatBread = new Item();
-		Item raisinBread = new Item();
-		Item oatBread = new Item();
-		Item honeyWheatBread = new Item();
-		
-		whiteBread.setName("White Bread");
-		wheatBread.setName("Wheat Bread");
-		raisinBread.setName("Raisin Bread");
-		oatBread.setName("Oat Bread");
-		honeyWheatBread.setName("Honey Wheat Bread");
-		
-		whiteBread.setPrice("3.00");
-		wheatBread.setPrice("4.00");
-		raisinBread.setPrice("3.50");
-		oatBread.setPrice("3.75");
-		honeyWheatBread.setPrice("4.50");
-		
-		whiteBread.setQuantity("");
-		wheatBread.setQuantity("");
-		raisinBread.setQuantity("");
-		oatBread.setQuantity("");
-		honeyWheatBread.setQuantity("");
-		
-		items.add(whiteBread);
-		items.add(wheatBread);
-		items.add(raisinBread);
-		items.add(oatBread);
-		items.add(honeyWheatBread);
-		
+	public Inventory getAvailableInventory() {	
+		items = entityManager.createQuery(MY_QUERY, Item.class).getResultList();
 		return new Inventory(items);
 	}
 
 	@Override
 	public boolean validateQuantity(Collection<Item> items) {
-		/*for (Item orderItem : items) {
-			if (Integer.parseInt(orderItem.getQuantity()) > 0) {
-				for (Item inventoryItem : items) {
+		for (Item orderItem : items) {
+			if (orderItem.getQuantity() > 0) {
+				Inventory inventory = getAvailableInventory();
+				for (Item inventoryItem : inventory.getItemList()) {
 					if (orderItem.getName().equals(inventoryItem.getName())) {
-						// To Do
+						if (orderItem.getQuantity() > inventoryItem.getQuantity()){
+							return false;
+						}
 					}
 				}
 			}
-		}*/
+		}
 		return true;
 	}
 
