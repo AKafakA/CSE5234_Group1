@@ -15,17 +15,25 @@ import javax.persistence.Table;
 public class Item implements Serializable {
 	
 	private static final long serialVersionUID = -8834348079171772957L;
-	
-	private int id;
-	private int itemNumber;	
-	private String name;
-	private String description;
-	private double price;
-	private int quantity;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
+	private int id;
+	
+	@Column(name = "ITEM_NUMBER")
+	private int itemNumber;	
+	
+	@Column(name = "NAME")
+	private String name;
+	
+	@Column(name = "DESCRIPTION")
+	private String description;
+	
+	@Column(name = "UNIT_PRICE")
+	private double price;
+	
+	@Column(name = "AVAILABLE_QUANTITY")
+	private int quantity;
 	public int getId() {
 		return id;
 	}
@@ -34,7 +42,6 @@ public class Item implements Serializable {
 		this.id = id;
 	}
 	
-	@Column(name = "ITEM_NUMBER")
 	public int getItemNumber() {
 		return itemNumber;
 	}
@@ -43,7 +50,6 @@ public class Item implements Serializable {
 		this.itemNumber = itemNumber;
 	}
 	
-	@Column(name = "NAME")
 	public String getName() {
 		return name;
 	}
@@ -52,7 +58,6 @@ public class Item implements Serializable {
 		this.name = name;
 	}
 	
-	@Column(name = "DESCRIPTION")
 	public String getDescription() {
 		return description;
 	}
@@ -61,7 +66,6 @@ public class Item implements Serializable {
 		this.description = description;
 	}
 	
-	@Column(name = "UNIT_PRICE")
 	public double getPrice() {
 		return price;
 	}
@@ -70,7 +74,6 @@ public class Item implements Serializable {
 		this.price = price;
 	}
 	
-	@Column(name = "AVAILABLE_QUANTITY")
 	public int getQuantity() {
 		return quantity;
 	}

@@ -38,15 +38,21 @@ public class OrderProcessingServiceBean {
         // TODO Auto-generated constructor stub
     }
 
-    public String processOrder(Order order) {
-    	this.entityManager.persist(order);
-    	this.entityManager.flush();
-    	ServiceLocator.getInventoryService().updateInventory(lineItemsToItems(order.getLineItems()));
-    	int max = 9999999;
-    	int min = 1000000;
-    	Random rand = new Random();
-    	int randomNumber = rand.nextInt(max - min + 1) + min;
-    	return String.valueOf(randomNumber);
+    public String processOrder(Order order) throws IllegalArgumentException{
+    	InventoryService inventoryService = ServiceLocator.getInventoryService();
+    	List<LineItem> selledItems =  order.getLineItems();
+    	if (inventoryService.updateInventory(lineItemsToItems(selledItems))) {
+        	this.entityManager.persist(order);
+        	this.entityManager.flush();
+        	ServiceLocator.getInventoryService().updateInventory(lineItemsToItems(order.getLineItems()));
+        	int max = 9999999;
+        	int min = 1000000;
+        	Random rand = new Random();
+        	int randomNumber = rand.nextInt(max - min + 1) + min;
+        	return String.valueOf(randomNumber);
+    	} else {
+    		return "Sorry, no enough items";
+    	}
 
     }
     
