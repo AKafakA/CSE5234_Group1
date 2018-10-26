@@ -18,5 +18,5 @@ To run this project, please make sure:
     create table SHIPPING_INFO (ID int auto_increment primary key, ADDRESS1 varchar(255), ADDRESS2 varchar(255), CITY varchar(255), STATE varchar(255), COUNTRY varchar(255) default "USA", ZIP varchar(255), EMAIL varchar(255));  
     
 To Do:  
-1. updatingInventory() to allow update the quality of items in inventory
+<del>1. updatingInventory() to allow update the quality of items in inventory </del>  
 2. coding updating and refactor
