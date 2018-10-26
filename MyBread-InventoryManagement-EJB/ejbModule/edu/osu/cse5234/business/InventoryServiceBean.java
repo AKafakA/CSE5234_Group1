@@ -71,7 +71,7 @@ public class InventoryServiceBean implements InventoryService {
 							if (orderItem.getQuantity() > inventoryItem.getQuantity()){
 								return false;
 							} else {
-								entityManager.createQuery(String.format("update Item set quantity = %d where id=1", newQuantity , id), Item.class) 
+								entityManager.createQuery(String.format("update Item set quantity = %d where id= %d", newQuantity , id), Item.class) 
 							     .executeUpdate();
 							}
 						}
