@@ -1,5 +1,6 @@
 package edu.osu.cse5234.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import edu.osu.cse5234.business.OrderProcessingServiceBean;
 import edu.osu.cse5234.business.view.Inventory;
 import edu.osu.cse5234.business.view.InventoryService;
 import edu.osu.cse5234.business.view.Item;
+import edu.osu.cse5234.model.LineItem;
 import edu.osu.cse5234.util.ServiceLocator;
 
 @Controller
@@ -28,10 +30,16 @@ public class Purchase {
 		InventoryService inventoryService = ServiceLocator.getInventoryService();
 		Inventory inventory = inventoryService.getAvailableInventory();
 		List<Item> items = inventory.getItemList();
+		List<LineItem> lineItems = new ArrayList<>();
 		for(Item item : items) {
-			item.setQuantity(0);
+			LineItem newlt = new LineItem();
+			newlt.setId(item.getId());
+			newlt.setItemName(item.getName());
+			newlt.setPrice(item.getPrice());
+			newlt.setQuantity(0);
+			lineItems.add(newlt);
 		}
-		order.setItems(items);
+		order.setLineItems(lineItems);
 		request.setAttribute("order", order);
 		return "Purchase";
 	}
@@ -82,6 +90,17 @@ public class Purchase {
 	public String confirmOrder(HttpServletRequest request) {
 		count++;
 		Order order = (Order)request.getSession().getAttribute("order");
+		
+		// updating the order information: shippingInfo, paymentInfo, name, email
+		ShippingInfo shippingInfo = (ShippingInfo) request.getSession().getAttribute("shipping");
+		PaymentInfo paymentInfo = (PaymentInfo) request.getSession().getAttribute("payment");
+		
+		order.setPayment(paymentInfo);
+		order.setShipping(shippingInfo);
+		order.setCustomerName(paymentInfo.getCardHolderName()); 
+		order.setCustomerEmail(shippingInfo.getEmail());
+		
+		
 		OrderProcessingServiceBean orderProcessingServiceBean = ServiceLocator.getOrderProcessingService();
 		String confirmationCode = orderProcessingServiceBean.processOrder(order);
 		request.getSession().setAttribute("confirmation", confirmationCode);

@@ -41,6 +41,10 @@
 	   		<th>Zip</th>
 			<td><form:input class="form-control" path="zip" /></td>
 		</tr>
+		<tr>
+	   		<th>Email</th>
+			<td><form:input class="form-control" path="email" /></td>
+		</tr>
     </table>
     <input type="submit" class="btn btn-outline-success" value="Ship">
 </form:form>

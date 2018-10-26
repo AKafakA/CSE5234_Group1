@@ -1,0 +1,8 @@
+/.apt_generated/
+/build/
+/.settings/
+/.metadata/
+/.recommenders/
+/.classpath/
+.classpath
+.DS_Store

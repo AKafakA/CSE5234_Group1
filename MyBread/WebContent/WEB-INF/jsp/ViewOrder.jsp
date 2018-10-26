@@ -21,13 +21,13 @@
     		<th>Price</th>
     		<th>Quantity</th>
     	</tr>
-	<c:forEach items="${order.items}" var="item" varStatus="loop">
+	<c:forEach items="${order.lineItems}" var="lineItem" varStatus="loop">
 		<tr>
-			<td><c:out value="${item.name}"></c:out></td>
-			<td><c:out value="$${item.price}"></c:out></td>
+			<td><c:out value="${lineItem.itemName}"></c:out></td>
+			<td><c:out value="$${lineItem.price}"></c:out></td>
 			<td><c:choose>
-			    <c:when test="${item.quantity != ''}">
-			        <c:out value= "${item.quantity}"/>
+			    <c:when test="${lineItem.quantity != ''}">
+			        <c:out value= "${lineItem.quantity}"/>
 			        <br />
 			    </c:when>    
 			    <c:otherwise>

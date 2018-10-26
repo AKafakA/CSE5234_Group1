@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="MyBread-InventoryManagement-EJBEAR">
+        <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <dependent-module archiveName="MyBread-InventoryManagement-EJB.jar" deploy-path="/" handle="module:/resource/MyBread-InventoryManagement-EJB/MyBread-InventoryManagement-EJB">
+            <dependent-object>Module_1539007262447</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MyBread-InventoryManagement-EJBClient.jar" deploy-path="/" handle="module:/resource/MyBread-InventoryManagement-EJBClient/MyBread-InventoryManagement-EJBClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

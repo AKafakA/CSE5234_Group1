@@ -1,0 +1,2 @@
+1. How to export to csv file?
+call CSVWRITE ( '/Users/gzx/Documents/semester3/Distribute/CSE5234_group1/data.csv', 'SELECT * FROM ITEM' ) 

@@ -25,9 +25,14 @@ public class InventoryServiceBean implements InventoryService {
 	private List<Item> items = new ArrayList<Item>();
 	private final String MY_QUERY = "Select i from Item i";
 	
-    public InventoryServiceBean() {
-    	items = null;
-    }
+
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 
 	@Override
 	public Inventory getAvailableInventory() {	
