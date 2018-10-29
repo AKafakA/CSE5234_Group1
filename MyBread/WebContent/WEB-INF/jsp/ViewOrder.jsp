@@ -62,6 +62,7 @@
 			<th>City</th>
 			<th>State</th>
 			<th>Zip</th>
+			<th>Email</th>
 		</tr>
 		<tr>
 			<td><c:out value="${shipping.name}"></c:out></td>
@@ -70,6 +71,7 @@
 			<td><c:out value="${shipping.city}"></c:out></td>
 			<td><c:out value="${shipping.state}"></c:out></td>
 			<td><c:out value="${shipping.zip}"></c:out></td>
+			<td><c:out value="${shipping.email}"></c:out></td>
 		</tr>
 	</table>
 	<form:form method="post" action="confirmOrder">

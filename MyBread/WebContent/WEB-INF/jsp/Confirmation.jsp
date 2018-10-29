@@ -64,6 +64,7 @@
 			<th>City</th>
 			<th>State</th>
 			<th>Zip</th>
+			<th>Email</th>
 		</tr>
 		<tr>
 			<td><c:out value="${shipping.name}"></c:out></td>

@@ -1,16 +1,11 @@
-package edu.osu.cse5234.controller;
+package com.chase.payment;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="PAYMENT_INFO") 
-public class PaymentInfo {
-	
+public class CreditCardPayment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")	
@@ -28,8 +23,8 @@ public class PaymentInfo {
 	@Column(name = "HOLDER_NAME")
 	private String cardHolderName;
 	
-	@Column(name = "CONFIRMATION_NUMBER")
-	private String confirmationNumber;
+	@Column(name = "PAYMENT")
+	private double payment;
 	
 	public String getCreditCardNumber() {
 		return creditCardNumber;
@@ -71,12 +66,11 @@ public class PaymentInfo {
 		this.id = id;
 	}
 
-	public String getConfirmationNumber() {
-		return confirmationNumber;
+	public double getPayment() {
+		return payment;
 	}
 
-	public void setConfirmationNumber(String confirmationNumber) {
-		this.confirmationNumber = confirmationNumber;
+	public void setPayment(double payment) {
+		this.payment = payment;
 	}
-
 }
