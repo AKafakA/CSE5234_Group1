@@ -38,6 +38,9 @@ public class ShippingInfo {
 	@Column(name = "ZIP")
 	private String zip;
 	
+	@Column(name = "UPS_SHIPPING_REF")
+	private int shippingRefNumber;
+	
 	public String getName() {
 		return name;
 	}
@@ -101,6 +104,14 @@ public class ShippingInfo {
 	public String getEmail() {
 		
 		return email;
+	}
+
+	public int getShippingReferenceNumber() {
+		return shippingRefNumber;
+	}
+
+	public void setShippingReferenceNumber(int shippingRefNumber) {
+		this.shippingRefNumber = shippingRefNumber;
 	}
 
 }

@@ -22,8 +22,6 @@ import edu.osu.cse5234.util.ServiceLocator;
 @RequestMapping("/purchase")
 public class Purchase {
 	
-	private int count = 0;
-	
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Order order = new Order();
@@ -88,7 +86,6 @@ public class Purchase {
 	
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
 	public String confirmOrder(HttpServletRequest request) {
-		count++;
 		Order order = (Order)request.getSession().getAttribute("order");
 		
 		// updating the order information: shippingInfo, paymentInfo, name, email

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.json.Json;
+import javax.json.JsonObject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.xml.ws.WebServiceRef;
@@ -19,6 +21,8 @@ import edu.osu.cse5234.controller.PaymentInfo;
 import edu.osu.cse5234.model.LineItem;
 import edu.osu.cse5234.util.ServiceLocator;
 
+import com.ups.shipping.client.ShippingInitiationClient;
+
 /**
  * Session Bean implementation class OrderProcessingServiceBean
  */
@@ -31,6 +35,7 @@ public class OrderProcessingServiceBean {
 	@WebServiceRef(wsdlLocation = 
     	       "http://localhost:9080/ChaseBankApplication/PaymentProcessorService?wsdl")
     private PaymentProcessorService service;
+	private static String shippingResourceURI = "http://localhost:9080/UPS/jaxrs";
 
     public EntityManager getEntityManager() {
 		return entityManager;
@@ -61,6 +66,19 @@ public class OrderProcessingServiceBean {
     		order.getPayment().setConfirmationNumber(paymentResponse);
     	}
     	
+    	//shipping
+		ShippingInitiationClient shippingInitiationClient = new ShippingInitiationClient(shippingResourceURI);
+		    		
+		JsonObject response = shippingInitiationClient.invokeInitiateShipping(arrangeShippingRequest(order));
+
+		if (response.containsKey("Accepted") && response.getBoolean("Accepted")) {
+			System.out.println(String.format("UPS Successfully accepted the order. ShippingReferenceNumber: %d, OrderRefId: %d. ",
+					response.getInt("ShippingReferenceNumber"),
+					response.getInt("OrderRefId")));
+			order.getShipping().setShippingReferenceNumber(response.getInt("ShippingReferenceNumber"));
+		}     
+		
+		//update inventory
     	if (inventoryService.updateInventory(lineItemsToItems(selledItems))) {
         	this.entityManager.persist(order);
         	this.entityManager.flush();
@@ -73,7 +91,15 @@ public class OrderProcessingServiceBean {
     	} else {
     		return "Sorry, no enough items";
     	}
-
+    }
+    
+    private JsonObject arrangeShippingRequest(Order order) {
+    	return Json.createObjectBuilder()
+    			.add("Organization", "MyBread LLC.")
+    			.add("OrderRefId", order.getId())
+    			.add("Zip", order.getShipping().getZip())
+    			.add("ItemsNumber", order.getLineItems().size())
+    			.build();
     }
     
     private CreditCardPayment createCreditCardPayment(PaymentInfo payment) {
