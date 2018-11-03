@@ -24,7 +24,7 @@ public class ShippingInitiation {
 		int numberOfItemsToShip = incomingJson.getInt("ItemsNumber");
 		String zip = incomingJson.getString("Zip");
 
-		System.out.println("UPS\n===\n" + organization 
+		System.out.println("\nUPS\n===\n" + organization 
 				+ " requested shipping of " + numberOfItemsToShip
 				+ " items to ZIP: " + zip 
 				+ ", Order Ref: " + orderRefId);
