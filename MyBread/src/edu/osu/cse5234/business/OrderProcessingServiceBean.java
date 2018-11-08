@@ -26,6 +26,7 @@ import edu.osu.cse5234.business.view.InventoryService;
 import edu.osu.cse5234.business.view.Item;
 import edu.osu.cse5234.controller.Order;
 import edu.osu.cse5234.controller.PaymentInfo;
+import edu.osu.cse5234.controller.ShippingInfo;
 import edu.osu.cse5234.model.LineItem;
 import edu.osu.cse5234.util.ServiceLocator;
 
@@ -91,6 +92,9 @@ public class OrderProcessingServiceBean {
 
 		System.out.println("UPS accepted request? " + responseJson.getBoolean("Accepted"));
 		System.out.println("Shipping Reference Number: " +  responseJson.getInt("ShippingReferenceNumber"));
+		
+		ShippingInfo shippingInfo = order.getShipping();
+		shippingInfo.setShippingReferenceNumber(responseJson.getInt("ShippingReferenceNumber"));
 		
 		//Notification
 		notifyUser(order.getCustomerEmail());

@@ -39,7 +39,7 @@ public class ShippingInfo {
 	private String zip;
 	
 	@Column(name = "UPS_SHIPPING_REF")
-	private int shippingRefNumber;
+	private int shippingReferenceNumber;
 	
 	public String getName() {
 		return name;
@@ -107,11 +107,11 @@ public class ShippingInfo {
 	}
 
 	public int getShippingReferenceNumber() {
-		return shippingRefNumber;
+		return shippingReferenceNumber;
 	}
 
-	public void setShippingReferenceNumber(int shippingRefNumber) {
-		this.shippingRefNumber = shippingRefNumber;
+	public void setShippingReferenceNumber(int shippingReferenceNumber) {
+		this.shippingReferenceNumber = shippingReferenceNumber;
 	}
 
 }
